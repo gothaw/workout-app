@@ -13,9 +13,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import javafx.scene.media.AudioClip;
-import javafx.util.Duration;
-
 import java.util.ArrayList;
+import javafx.util.Duration;
 import java.util.List;
 
 public class Home {
@@ -68,7 +67,7 @@ public class Home {
     }
 
     public void setTimerText(int remainingSeconds) {
-        setTimerText(Attempt.createTimerString(remainingSeconds));
+        setTimerText(Timer.createTimerString(remainingSeconds));
     }
 
     public String getBreakTimeConfigText() {
@@ -84,7 +83,7 @@ public class Home {
     }
 
     public void setBreakTimeConfigText(int totalSeconds) {
-        setBreakTimeConfigText(Attempt.createTimerString(totalSeconds));
+        setBreakTimeConfigText(Timer.createTimerString(totalSeconds));
     }
 
     public String getWorkoutTimeConfigText() {
@@ -100,7 +99,7 @@ public class Home {
     }
 
     public void setWorkoutTimeConfigText(int totalSeconds) {
-        setWorkoutTimeConfigText(Attempt.createTimerString(totalSeconds));
+        setWorkoutTimeConfigText(Timer.createTimerString(totalSeconds));
     }
 
     /* Prepare Attempt */

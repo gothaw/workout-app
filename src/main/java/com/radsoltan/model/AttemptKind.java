@@ -5,7 +5,6 @@ package com.radsoltan.model;
  * It includes attempt name, description to be displayed on screen and total number of seconds for the attempt.
  */
 public class AttemptKind {
-
     private String mName;
     private String mDescription;
     private int mTotalSeconds;

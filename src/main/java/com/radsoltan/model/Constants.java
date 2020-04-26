@@ -1,5 +1,8 @@
 package com.radsoltan.model;
 
+/**
+ * Helper class with constants.
+ */
 public class Constants {
     public static final String DEFAULT_DESC = "Enter workout and break time";
     public static final String PREP_NAME = "prep";
