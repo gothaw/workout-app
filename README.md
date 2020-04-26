@@ -1,6 +1,6 @@
 # workout-app
 
-Desktop application build in JavaFX. The app is based on the pomodoro app built for Intermediate Java Course at Team TreeHouse online training programme. The purpose of the project was to familiarize with basis of JavaFx and using dependency management tool (Gradle) to build and deploy the app. The code was initially developed in java-tth repo but was moved to separate repository to write up documentation and testing.
+Desktop application build in JavaFX. The app is based on the pomodoro app built for Intermediate Java Course at Team TreeHouse online training programme. The purpose of the project was to familiarize with basis of JavaFx and using dependency management tool (Gradle) to build and deploy the app. The code was initially developed in java-tth repo but was moved to separate repository to finish the application and finalize documentation and testing.
 
 ### App Description
 

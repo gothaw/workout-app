@@ -68,7 +68,7 @@ public class Home {
     }
 
     public void setTimerText(int remainingSeconds) {
-        setTimerText(AttemptKind.createTimerString(remainingSeconds));
+        setTimerText(Attempt.createTimerString(remainingSeconds));
     }
 
     public String getBreakTimeConfigText() {
@@ -84,7 +84,7 @@ public class Home {
     }
 
     public void setBreakTimeConfigText(int totalSeconds) {
-        setBreakTimeConfigText(AttemptKind.createTimerString(totalSeconds));
+        setBreakTimeConfigText(Attempt.createTimerString(totalSeconds));
     }
 
     public String getWorkoutTimeConfigText() {
@@ -100,7 +100,7 @@ public class Home {
     }
 
     public void setWorkoutTimeConfigText(int totalSeconds) {
-        setWorkoutTimeConfigText(AttemptKind.createTimerString(totalSeconds));
+        setWorkoutTimeConfigText(Attempt.createTimerString(totalSeconds));
     }
 
     /* Prepare Attempt */
