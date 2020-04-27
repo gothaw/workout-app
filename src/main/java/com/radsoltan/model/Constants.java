@@ -12,4 +12,5 @@ public class Constants {
     public static final String WORKOUT_DESC = "Workout!!!";
     public static final String BREAK_DESC = "Break Time!";
     public static final int PREP_DURATION = 5;
+    public static final int SECONDS_STEP = 15;
 }

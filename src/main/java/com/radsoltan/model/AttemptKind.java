@@ -81,20 +81,22 @@ public class AttemptKind {
     }
 
     /**
-     * Decreases total seconds of the attempt by 15s
+     * Decreases total seconds of the attempt by specified number of seconds.
+     * @param seconds
      */
-    public void decreaseSeconds() {
+    public void decreaseSeconds(int seconds) {
         if (mTotalSeconds > 0) {
-            mTotalSeconds = mTotalSeconds - 15;
+            mTotalSeconds = mTotalSeconds - seconds;
         }
     }
 
     /**
-     * Increases total seconds of the attempt by 15s
+     * Increases total seconds of the attempt by specified number of seconds.
+      @param seconds
      */
-    public void increaseSeconds() {
+    public void increaseSeconds(int seconds) {
         if (mTotalSeconds < 60 * 60) {
-            mTotalSeconds = mTotalSeconds + 15;
+            mTotalSeconds = mTotalSeconds + seconds;
         }
     }
 }

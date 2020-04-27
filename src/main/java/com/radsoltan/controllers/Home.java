@@ -282,7 +282,7 @@ public class Home {
      * @param actionEvent break time configuration arrow up click
      */
     public void handleBreakTimeIncrease(ActionEvent actionEvent) {
-        mBreak.increaseSeconds();
+        mBreak.increaseSeconds(Constants.SECONDS_STEP);
         setBreakTimeText(mBreak.getTotalSeconds());
     }
 
@@ -291,7 +291,7 @@ public class Home {
      * @param actionEvent break time configuration arrow down click
      */
     public void handleBreakTimeDecrease(ActionEvent actionEvent) {
-        mBreak.decreaseSeconds();
+        mBreak.decreaseSeconds(Constants.SECONDS_STEP);
         setBreakTimeText(mBreak.getTotalSeconds());
     }
 
@@ -300,7 +300,7 @@ public class Home {
      * @param actionEvent workout time configuration arrow up click
      */
     public void handleWorkoutTimeIncrease(ActionEvent actionEvent) {
-        mWorkout.increaseSeconds();
+        mWorkout.increaseSeconds(Constants.SECONDS_STEP);
         setWorkoutTimeText(mWorkout.getTotalSeconds());
     }
 
@@ -309,7 +309,7 @@ public class Home {
      * @param actionEvent workout time configuration arrow down click
      */
     public void handleWorkoutTimeDecrease(ActionEvent actionEvent) {
-        mWorkout.decreaseSeconds();
+        mWorkout.decreaseSeconds(Constants.SECONDS_STEP);
         setWorkoutTimeText(mWorkout.getTotalSeconds());
     }
 }
