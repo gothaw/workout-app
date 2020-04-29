@@ -11,11 +11,23 @@ repositories {
 
 dependencies {
     testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.6.2'
+    testCompile "org.testfx:testfx-core:4.0.16-alpha"
+    testCompile "org.testfx:testfx-junit5:4.0.16-alpha"
+    testCompile group: 'org.assertj', name: 'assertj-core', version: '3.13.2'
 }
 
 javafx {
     version = '14'
     modules = ['javafx.base', 'javafx.controls', 'javafx.fxml', 'javafx.media']
+}
+
+compileTestJava {
+    moduleOptions {
+        addModules = ['org.testfx.junit5', 'org.assertj.core']
+        addReads = [
+                'com.radsoltan' : 'org.testfx.junit5, org.assertj.core'
+        ]
+    }
 }
 
 java {

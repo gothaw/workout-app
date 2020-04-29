@@ -2,7 +2,8 @@ package com.radsoltan.controllers;
 
 import com.radsoltan.model.Attempt;
 import com.radsoltan.model.AttemptKind;
-import com.radsoltan.model.Constants;
+import com.radsoltan.util.Constants;
+import com.radsoltan.util.Timer;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -159,6 +160,14 @@ public class Home {
      */
     public void setWorkoutTimeText(int totalSeconds) {
         setWorkoutTimeText(Timer.createTimerString(totalSeconds));
+    }
+
+    /**
+     * Gets attempt title.
+     * @return attempt title
+     */
+    public String getTitle() {
+        return title.textProperty().get();
     }
 
     /**

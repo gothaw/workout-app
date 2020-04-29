@@ -1,6 +1,6 @@
 package com.radsoltan.model;
 
-import org.junit.jupiter.api.BeforeAll;
+import com.radsoltan.util.Constants;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

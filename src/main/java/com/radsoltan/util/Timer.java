@@ -1,4 +1,4 @@
-package com.radsoltan.controllers;
+package com.radsoltan.util;
 
 /**
  * Helper method for displaying minutes and seconds in timer format.

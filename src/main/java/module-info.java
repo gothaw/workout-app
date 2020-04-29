@@ -7,5 +7,4 @@ module com.radsoltan {
     opens com.radsoltan.controllers to javafx.fxml;
     exports com.radsoltan;
     exports com.radsoltan.controllers;
-    exports com.radsoltan.model;
 }

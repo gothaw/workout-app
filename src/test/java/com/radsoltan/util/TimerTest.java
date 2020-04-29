@@ -1,5 +1,6 @@
-package com.radsoltan.controllers;
+package com.radsoltan.util;
 
+import com.radsoltan.util.Timer;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
