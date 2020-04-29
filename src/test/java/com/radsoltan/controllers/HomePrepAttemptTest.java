@@ -1,6 +1,7 @@
 package com.radsoltan.controllers;
 
 import com.radsoltan.util.Constants;
+import com.radsoltan.util.Timer;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -16,15 +17,21 @@ import org.testfx.framework.junit5.Start;
 
 import java.io.IOException;
 
-import static org.testfx.assertions.api.Assertions.*;
+import static org.testfx.assertions.api.Assertions.assertThat;
 
 @ExtendWith(ApplicationExtension.class)
-class HomeLaunchTest {
+class HomePrepAttemptTest {
     private Label timer;
     private Label workoutConfig;
     private Label breakConfig;
     private Label attemptTitle;
     private Button play;
+    private Button pause;
+    private Button restart;
+    private Button workoutTimeUp;
+    private Button workoutTimeDown;
+    private Button breakTimeUp;
+    private Button breakTimeDown;
     private Home home;
     private VBox container;
 
@@ -39,41 +46,13 @@ class HomeLaunchTest {
         breakConfig = (Label) root.lookup("#breakTimeConfig");
         attemptTitle = (Label) root.lookup("#title");
         play = (Button) root.lookup("#play");
+        pause = (Button) root.lookup("#pause");
+        restart = (Button) root.lookup("#restart");
+        workoutTimeUp = (Button) root.lookup("#workoutTimeUp");
+        workoutTimeDown = (Button) root.lookup("#workoutTimeDown");
+        breakTimeUp = (Button) root.lookup("#breakTimeUp");
+        breakTimeDown = (Button) root.lookup("#breakTimeDown");
         container = (VBox) root.lookup("#container");
         primaryStage.show();
-    }
-
-    @Test
-    void mainTimerHasCorrectTimeWhenAppLaunches() {
-        assertThat(timer).hasText("00:00");
-        assertThat(home.getTimerText()).isEqualTo("00:00");
-    }
-
-    @Test
-    void workoutAndBreakConfigTimersHaveCorrectTimeWhenAppLaunches() {
-        assertThat(workoutConfig).hasText("00:00");
-        assertThat(breakConfig).hasText("00:00");
-        assertThat(home.getWorkoutTimeText()).isEqualTo("00:00");
-        assertThat(home.getWorkoutTimeText()).isEqualTo("00:00");
-    }
-
-    @Test
-    void attemptTitleIsCorrectWhenAppLaunches() {
-        assertThat(attemptTitle).hasText(Constants.DEFAULT_DESC);
-        assertThat(home.getTitle()).isEqualTo(Constants.DEFAULT_DESC);
-    }
-
-    @Test
-    void containerStylingIsCorrectWhenAppLaunches() {
-        assertThat(container.getStyleClass().toString()).isEqualTo("root");
-    }
-
-    @Test
-    void timerDoesNotStartWithoutSettingUpConfig(FxRobot robot) {
-        robot.clickOn(play);
-        mainTimerHasCorrectTimeWhenAppLaunches();
-        workoutAndBreakConfigTimersHaveCorrectTimeWhenAppLaunches();
-        attemptTitleIsCorrectWhenAppLaunches();
-        containerStylingIsCorrectWhenAppLaunches();
     }
 }
