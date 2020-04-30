@@ -24,16 +24,12 @@ import static org.testfx.assertions.api.Assertions.assertThat;
 @ExtendWith(ApplicationExtension.class)
 class HomePauseBtnTest {
     private Label timer;
-    private Label workoutConfig;
-    private Label breakConfig;
     private Label attemptTitle;
     private Button play;
     private Button pause;
     private Button restart;
     private Button workoutTimeUp;
-    private Button workoutTimeDown;
     private Button breakTimeUp;
-    private Button breakTimeDown;
     private Home home;
     private VBox container;
 
@@ -44,30 +40,52 @@ class HomePauseBtnTest {
         home = fxmlLoader.getController();
         primaryStage.setScene(new Scene(root, Constants.WINDOW_WIDTH, Constants.WINDOW_HEIGHT));
         timer = (Label) root.lookup("#time");
-        workoutConfig = (Label) root.lookup("#workoutTimeConfig");
-        breakConfig = (Label) root.lookup("#breakTimeConfig");
         attemptTitle = (Label) root.lookup("#title");
         play = (Button) root.lookup("#play");
         pause = (Button) root.lookup("#pause");
         restart = (Button) root.lookup("#restart");
         workoutTimeUp = (Button) root.lookup("#workoutTimeUp");
-        workoutTimeDown = (Button) root.lookup("#workoutTimeDown");
         breakTimeUp = (Button) root.lookup("#breakTimeUp");
-        breakTimeDown = (Button) root.lookup("#breakTimeDown");
         container = (VBox) root.lookup("#container");
         primaryStage.show();
     }
     
     @Test
-    void afterBreakTimeAppGoesIntoWorkoutTimeCorrectly(FxRobot robot) {
-        String expectedTimerText = Timer.createTimerString(Constants.SECONDS_STEP);
+    void pauseButtonWorksCorrectly(FxRobot robot) {
+        String expectedTimerTextPrep = Timer.createTimerString(Constants.SECONDS_STEP - 2);
+        String expectedTimerTextWorkout = Timer.createTimerString(Constants.SECONDS_STEP - 2);
+        String expectedTimerTextBreak = Timer.createTimerString(Constants.SECONDS_STEP - 4);
         robot.clickOn(workoutTimeUp);
         robot.clickOn(breakTimeUp);
         robot.clickOn(play);
-        WaitForAsyncUtils.sleep(Constants.PREP_DURATION + 2 * Constants.SECONDS_STEP, TimeUnit.SECONDS);
-        assertThat(timer).hasText(expectedTimerText);
-        assertThat(home.getTimerText()).isEqualTo(expectedTimerText);
+
+        WaitForAsyncUtils.sleep(2, TimeUnit.SECONDS);
+
+        robot.clickOn(pause);
+        assertThat(timer).hasText(expectedTimerTextPrep);
+        assertThat(home.getTimerText()).isEqualTo(expectedTimerTextPrep);
+        assertThat(container.getStyleClass().toString()).isEqualTo("root prep");
+        robot.clickOn(play);
+        assertThat(container.getStyleClass().toString()).isEqualTo("root prep playing");
+
+        WaitForAsyncUtils.sleep(Constants.SECONDS_STEP, TimeUnit.SECONDS);
+
+        robot.clickOn(pause);
+        assertThat(timer).hasText(expectedTimerTextWorkout);
+        assertThat(home.getTimerText()).isEqualTo(expectedTimerTextWorkout);
+        assertThat(container.getStyleClass().toString()).isEqualTo("root workout");
+        robot.clickOn(play);
         assertThat(container.getStyleClass().toString()).isEqualTo("root workout playing");
+
+        WaitForAsyncUtils.sleep(Constants.SECONDS_STEP + 2, TimeUnit.SECONDS);
+
+        robot.clickOn(pause);
+        assertThat(timer).hasText(expectedTimerTextBreak);
+        assertThat(home.getTimerText()).isEqualTo(expectedTimerTextBreak);
+        assertThat(container.getStyleClass().toString()).isEqualTo("root break");
+        robot.clickOn(play);
+        assertThat(container.getStyleClass().toString()).isEqualTo("root break playing");
+
         robot.clickOn(restart);
         appResetsCorrectly();
     }
