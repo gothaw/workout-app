@@ -12,7 +12,7 @@ Java 14, JavaFX 14, FXML, CSS
 
 ### Tested With
 
-Junit 5, TestFx, AssertJ
+JUnit 5, TestFx, AssertJ
 
 ### Deployment
 
