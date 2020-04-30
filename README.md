@@ -10,6 +10,10 @@ The project is a single stage application allows for [interval training](https:/
 
 Java 14, JavaFX 14, FXML, CSS
 
+### Tested With
+
+Junit 5, TestFx, AssertJ
+
 ### Deployment
 
 The project was built using Gradle 6.3 and using [JLink](https://github.com/beryx/badass-jlink-plugin) plugin deploy the application - jpackage and application image.
