@@ -24,23 +24,19 @@ import static org.testfx.assertions.api.Assertions.assertThat;
 @ExtendWith(ApplicationExtension.class)
 class HomePauseBtnTest {
     private Label timer;
-    private Label attemptTitle;
     private Button play;
     private Button pause;
     private Button restart;
     private Button workoutTimeUp;
     private Button breakTimeUp;
-    private Home home;
     private VBox container;
 
     @Start
     private void start(Stage primaryStage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/home.fxml"));
         Parent root = fxmlLoader.load();
-        home = fxmlLoader.getController();
         primaryStage.setScene(new Scene(root, Constants.WINDOW_WIDTH, Constants.WINDOW_HEIGHT));
         timer = (Label) root.lookup("#time");
-        attemptTitle = (Label) root.lookup("#title");
         play = (Button) root.lookup("#play");
         pause = (Button) root.lookup("#pause");
         restart = (Button) root.lookup("#restart");
@@ -63,7 +59,6 @@ class HomePauseBtnTest {
 
         robot.clickOn(pause);
         assertThat(timer).hasText(expectedTimerTextPrep);
-        assertThat(home.getTimerText()).isEqualTo(expectedTimerTextPrep);
         assertThat(container.getStyleClass().toString()).isEqualTo("root prep");
         robot.clickOn(play);
         assertThat(container.getStyleClass().toString()).isEqualTo("root prep playing");
@@ -72,7 +67,6 @@ class HomePauseBtnTest {
 
         robot.clickOn(pause);
         assertThat(timer).hasText(expectedTimerTextWorkout);
-        assertThat(home.getTimerText()).isEqualTo(expectedTimerTextWorkout);
         assertThat(container.getStyleClass().toString()).isEqualTo("root workout");
         robot.clickOn(play);
         assertThat(container.getStyleClass().toString()).isEqualTo("root workout playing");
@@ -81,7 +75,6 @@ class HomePauseBtnTest {
 
         robot.clickOn(pause);
         assertThat(timer).hasText(expectedTimerTextBreak);
-        assertThat(home.getTimerText()).isEqualTo(expectedTimerTextBreak);
         assertThat(container.getStyleClass().toString()).isEqualTo("root break");
         robot.clickOn(play);
         assertThat(container.getStyleClass().toString()).isEqualTo("root break playing");
@@ -92,7 +85,6 @@ class HomePauseBtnTest {
 
     void appResetsCorrectly(){
         assertThat(timer).hasText("00:00");
-        assertThat(home.getTimerText()).isEqualTo("00:00");
         assertThat(container.getStyleClass().toString()).isEqualTo("root");
     }
 }
