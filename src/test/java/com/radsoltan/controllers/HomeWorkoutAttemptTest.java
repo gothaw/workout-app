@@ -22,7 +22,7 @@ import java.util.concurrent.TimeUnit;
 import static org.testfx.assertions.api.Assertions.assertThat;
 
 @ExtendWith(ApplicationExtension.class)
-class HomePrepAttemptTest {
+class HomeWorkoutAttemptTest {
     private Label timer;
     private Button play;
     private Button restart;
@@ -47,28 +47,16 @@ class HomePrepAttemptTest {
     }
 
     @Test
-    void preparationAttemptStartsCorrectly(FxRobot robot) {
-        String expectedTimerText = Timer.createTimerString(Constants.PREP_DURATION);
-        robot.clickOn(workoutTimeUp);
-        robot.clickOn(breakTimeUp);
-        robot.clickOn(play);
-        assertThat(timer).hasText(expectedTimerText);
-        assertThat(home.getTimerText()).isEqualTo(expectedTimerText);
-        assertThat(container.getStyleClass().toString()).isEqualTo("root prep playing");
-        robot.clickOn(restart);
-        appResetsCorrectly();
-    }
-    @Test
-    void afterPreparationTimeAppGoesIntoWorkoutTimeCorrectly(FxRobot robot) {
+    void afterWorkoutTimeAppGoesIntoBreakTimeCorrectly(FxRobot robot) {
         String expectedTimerText = Timer.createTimerString(2 * Constants.SECONDS_STEP);
         robot.clickOn(workoutTimeUp);
-        robot.clickOn(workoutTimeUp);
+        robot.clickOn(breakTimeUp);
         robot.clickOn(breakTimeUp);
         robot.clickOn(play);
-        WaitForAsyncUtils.sleep(Constants.PREP_DURATION, TimeUnit.SECONDS);
+        WaitForAsyncUtils.sleep(Constants.PREP_DURATION + Constants.SECONDS_STEP, TimeUnit.SECONDS);
         assertThat(timer).hasText(expectedTimerText);
         assertThat(home.getTimerText()).isEqualTo(expectedTimerText);
-        assertThat(container.getStyleClass().toString()).isEqualTo("root workout playing");
+        assertThat(container.getStyleClass().toString()).isEqualTo("root break playing");
         robot.clickOn(restart);
         appResetsCorrectly();
     }
